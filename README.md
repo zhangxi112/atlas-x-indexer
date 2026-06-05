@@ -1,5 +1,7 @@
 # Atlas-X Indexer
 
+**Language:** English | [中文](README.zh-CN.md)
+
 Atlas-X Indexer is a local-first desktop index manager for ChatGPT conversation links, notes, tags, projects, saved filters, imports, and exports. The app is built with Tauri 2, React, TypeScript, Tailwind CSS, SQLite, FTS5, Zustand, Zod, and SheetJS.
 
 ## Features
@@ -37,7 +39,19 @@ Atlas-X Indexer is a local-first desktop index manager for ChatGPT conversation 
 
 This checkout may contain local toolchain folders such as `.tools/`, `.cargo-local/`, and `.rustup-local/` on the developer machine. They are intentionally ignored by Git and are not part of the public source release.
 
-## Install
+## Install From Release
+
+Download the Windows installer from GitHub Releases when a release is published:
+
+```text
+Atlas-X Indexer_0.1.0_x64-setup.exe
+```
+
+The installer is a Tauri NSIS per-user installer. It should install without administrator privileges and create a runnable Atlas-X Indexer desktop app.
+
+## Local Development
+
+Install dependencies:
 
 ```powershell
 npm install
@@ -48,8 +62,6 @@ On PowerShell systems that block `npm.ps1`, use `npm.cmd`:
 ```powershell
 npm.cmd install
 ```
-
-## Development
 
 Frontend-only development:
 
@@ -102,13 +114,20 @@ On the local Windows development machine, the path-safe helper can also be used:
 powershell -ExecutionPolicy Bypass -File .\scripts\windows-build.ps1
 ```
 
-## Local Verification
+## Verified Local Release Build
 
-The following checks were run successfully on 2026-06-05 before public release preparation:
+The current local release artifact is:
+
+```text
+src-tauri\target\release\bundle\nsis\Atlas-X Indexer_0.1.0_x64-setup.exe
+```
+
+Local verification before publication:
 
 - `npm.cmd test`: 2 test files passed, 9 tests passed.
 - `npm.cmd run build`: TypeScript and Vite production build completed.
 - `cargo check` from a short `X:\src-tauri` path using the local Windows Rust toolchain completed successfully.
+- Local NSIS installer artifact was found for version `0.1.0`.
 
 ## Data Location
 
