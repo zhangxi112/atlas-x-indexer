@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "Atlas-X Capture",
+  "version": "0.2.0",
+  "description": "Capture ChatGPT and Gemini conversations into the local Atlas-X Indexer inbox.",
+  "permissions": ["activeTab", "contextMenus", "scripting"],
+  "host_permissions": [
+    "http://127.0.0.1:38951/*",
+    "https://chatgpt.com/*",
+    "https://chat.openai.com/*",
+    "https://gemini.google.com/*"
+  ],
+  "action": {
+    "default_title": "Atlas-X Capture",
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://chatgpt.com/*", "https://chat.openai.com/*", "https://gemini.google.com/*"],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle"
+    }
+  ]
+}
