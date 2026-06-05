@@ -41,13 +41,14 @@ This checkout may contain local toolchain folders such as `.tools/`, `.cargo-loc
 
 ## Install From Release
 
-Download the Windows installer from GitHub Releases when a release is published:
+Download the Windows installer from the release assets directory or GitHub Releases:
 
 ```text
-Atlas-X Indexer_0.1.0_x64-setup.exe
+release_assets/Atlas-X Indexer_0.1.0_x64-setup.exe
 ```
 
 The installer is a Tauri NSIS per-user installer. It should install without administrator privileges and create a runnable Atlas-X Indexer desktop app.
+Verify the download with `release_assets/Atlas-X Indexer_0.1.0_x64-setup.exe.sha256` when needed.
 
 ## Local Development
 
@@ -119,7 +120,7 @@ powershell -ExecutionPolicy Bypass -File .\scripts\windows-build.ps1
 The current local release artifact is:
 
 ```text
-src-tauri\target\release\bundle\nsis\Atlas-X Indexer_0.1.0_x64-setup.exe
+release_assets\Atlas-X Indexer_0.1.0_x64-setup.exe
 ```
 
 Local verification before publication:
@@ -128,6 +129,7 @@ Local verification before publication:
 - `npm.cmd run build`: TypeScript and Vite production build completed.
 - `cargo check` from a short `X:\src-tauri` path using the local Windows Rust toolchain completed successfully.
 - Local NSIS installer artifact was found for version `0.1.0`.
+- Installer smoke check: silent install to a temporary directory exited with code `0`, installed `atlas-x-indexer.exe`, and the installed app launched successfully.
 
 ## Data Location
 

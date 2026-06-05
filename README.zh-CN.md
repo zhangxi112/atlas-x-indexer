@@ -41,13 +41,14 @@ Atlas-X Indexer 是一个本地优先的桌面索引管理器，用于管理 Cha
 
 ## 从 Release 安装
 
-发布 GitHub Release 后，下载 Windows 安装包：
+从 release assets 目录或 GitHub Releases 下载 Windows 安装包：
 
 ```text
-Atlas-X Indexer_0.1.0_x64-setup.exe
+release_assets/Atlas-X Indexer_0.1.0_x64-setup.exe
 ```
 
 该安装包是 Tauri NSIS 当前用户安装包，预期无需管理员权限即可安装，并创建可运行的 Atlas-X Indexer 桌面应用。
+如需校验下载文件，可使用 `release_assets/Atlas-X Indexer_0.1.0_x64-setup.exe.sha256`。
 
 ## 本地开发
 
@@ -119,7 +120,7 @@ powershell -ExecutionPolicy Bypass -File .\scripts\windows-build.ps1
 当前本地 release 产物为：
 
 ```text
-src-tauri\target\release\bundle\nsis\Atlas-X Indexer_0.1.0_x64-setup.exe
+release_assets\Atlas-X Indexer_0.1.0_x64-setup.exe
 ```
 
 发布前本地验证结果：
@@ -128,6 +129,7 @@ src-tauri\target\release\bundle\nsis\Atlas-X Indexer_0.1.0_x64-setup.exe
 - `npm.cmd run build`：TypeScript 和 Vite 生产构建完成。
 - 在短路径 `X:\src-tauri` 下使用本机 Windows Rust 工具链执行 `cargo check` 成功。
 - 已找到版本 `0.1.0` 的本地 NSIS 安装包产物。
+- 安装包冒烟验证：静默安装到临时目录退出码为 `0`，生成 `atlas-x-indexer.exe`，并且安装后的应用可以成功启动。
 
 ## 数据位置
 
